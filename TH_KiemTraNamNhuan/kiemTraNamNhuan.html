@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // năm nhuận là năm chia hết cho 4 nhưng không chia hết cho 100 hoặc năm chia hết cho 400
+        var nam = prompt('Nhập vào một năm: ');
+
+        if (nam % 4 == 0 && nam % 100 != 0 || nam % 400 == 0) {
+            document.write(nam + " la nam nhuan!");
+        }
+        else document.write(nam + " khong phai la nam nhuan!");
+    </script>
+</body>
+
+</html>
