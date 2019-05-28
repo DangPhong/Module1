@@ -1,7 +1,7 @@
-var dai=parseInt(dai);;
-var rong=parseInt(rong);;
-dai=prompt('Nhap chiều dài: ')
-rong= prompt('Nhap chiều rộng: ');
+var dai=prompt('Nhap chiều dài: ');
+var rong= prompt('Nhap chiều rộng: ');
+dai=parseInt(dai);;
+rong=parseInt(rong);;
 
 var dienTich=dai*rong;
 document.write('Diện tích HCN là: '+dienTich)
