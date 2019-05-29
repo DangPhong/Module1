@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form> <br>
+        <fieldset>
+            <legend>Chuyển đổi tiền </legend>
+            Amount
+            <input type="text" name="number">
+            From Currency
+            <select name="money1">
+                <option value="VN">VNĐ</option>
+
+            </select>
+            To Currency
+            <select name="money2">
+                <option value="USD">USD</option>
+
+            </select>
+            <button type="button">Convert</button>
+        </fieldset>
+    </form>
+    <script>
+        var vnd, usd;
+        function toVND() {
+            vnd = usd * 23000;
+        }
+        function toUSD() {
+            usd = vnd / 23000;
+        }
+    </script>
+</body>
+
+</html>

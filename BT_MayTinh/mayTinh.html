@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form>
+		<fieldset>
+		<legend>Ứng Dụng Máy Tính</legend>
+		<input type="text" id="inputnumber1">
+		<input type="text" id="inputnumber2"><br>
+		<input type="button" onclick=" cong()" value="Cộng">
+		<input type="button" onclick="tru()" value="Trừ(-)">
+		<input type="button" onclick="nhan()" value="Nhân(x)" >
+		<input type="button" onclick="chia()" value="Chia" >
+		</button>
+		<p id="ketqua">
+		</p>
+		</fieldset>
+
+
+	</form>
+</body>
+<script>
+	function cong(){
+		let firstnumber=document.getElementById("inputnumber1").value;
+		firstnumber= parseFloat(firstnumber);
+		let secondnumber=document.getElementById("inputnumber2").value;
+	    secondnumber= parseFloat(secondnumber);
+	    let kqua=firstnumber+secondnumber;
+		document.getElementById("ketqua").innerHTML=kqua;
+	}
+	function tru(){
+		let firstnumber=document.getElementById("inputnumber1").value;
+		parseFloat(firstnumber);
+		let secondnumber=document.getElementById("inputnumber2").value;
+		parseFloat(secondnumber);
+		let kqua=firstnumber - secondnumber;
+		document.getElementById("ketqua").innerHTML=kqua;
+	}
+	function nhan(){
+		let firstnumber=document.getElementById("inputnumber1").value;
+		parseFloat(firstnumber);
+		let secondnumber=document.getElementById("inputnumber2").value;
+		parseFloat(secondnumber);
+		let kqua=firstnumber*secondnumber;
+		document.getElementById("ketqua").innerHTML=kqua;
+	}
+	function chia(){
+		let firstnumber=document.getElementById("inputnumber1").value;
+		parseFloat(firstnumber);
+		let secondnumber=document.getElementById("inputnumber2").value;
+		parseFloat(secondnumber);
+		kqua=firstnumber/secondnumber;
+		document.getElementById("ketqua").innerHTML=kqua;
+	}
+</script>
+</html>
