@@ -13,7 +13,7 @@
         <fieldset>
             <legend>Chuyển đổi tiền </legend>
             Amount
-            <input type="text" name="number">
+            <input type="text" id="money">
             From Currency
             <select name="money1">
                 <option value="VN">VNĐ</option>
@@ -22,18 +22,19 @@
             To Currency
             <select name="money2">
                 <option value="USD">USD</option>
-
             </select>
-            <button type="button">Convert</button>
+            <input type="button" onclick="toVND()" value="Convert">
+            <p id="ketqua"></p>
         </fieldset>
     </form>
     <script>
-        var vnd, usd;
         function toVND() {
-            vnd = usd * 23000;
-        }
-        function toUSD() {
-            usd = vnd / 23000;
+            //console.log('a');
+            var money = document.getElementById("money").value;
+            //console.log(money);
+            money = parseFloat(money);
+            var kq = money / 23000;
+            document.getElementById("ketqua").innerHTML=kq;
         }
     </script>
 </body>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+        Cửa hàng của bạn nhận gửi bán sản phẩm cho một công ty khác và sau mỗi tháng bạn cần tính toán số tiền hoa hồng bạn nhận được.Với mức hoa hồng theo doanh số bán hàng như sau:
+        5 % nếu tổng doanh số nhỏ hơn hoặc bằng 100 triệu.
+        10 % nếu tổng doanh số nhỏ hơn hoặc bằng 300 triệu.
+        20 % nếu tổng doanh số là lớn hơn 300 triệu.
+        */
+
+        // turnover: doanh số
+        // commission: hoa hồng
+
+        var turnover = parseFloat(prompt('Nhập doanh số: (triệu)'));
+        var commission = parseFloat(commission);
+        if (turnover <= 100) {
+            commission = turnover * 5 / 100;
+            alert("hoa hồng nhận được: " + commission+"tr");
+        }
+        else if (turnover <=300)
+        {
+            commission = turnover * 10 / 100;
+            alert("hoa hồng nhận được: " + commission+"tr");
+        }
+        else 
+        {
+            commission = turnover * 20 / 100;
+            alert("hoa hồng nhận được: " + commission+"tr");
+        }
+
+
+    </script>
+</body>
+
+</html>
