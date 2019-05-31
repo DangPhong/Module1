@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // triangle:tam giác 
+        //edge: cạnh
+
+        var a = parseInt(prompt('Nhập vào cạnh thứ nhất: '));
+        var b = parseInt(prompt('Nhập vào cạnh thứ hai: '));
+        var c = parseInt(prompt('Nhập vào cạnh thứ ba: '));
+
+        if (a > 0 && b > 0 && c > 0) {
+            if (a + b > c && a + c > b && b + c > a)
+                alert('a, b, c là các cạnh của tam giác')
+            else
+                alert('a, b, c không phải là các cạnh của tam giác');
+        }
+        else alert('a, b, c không phải là các cạnh của tam giác');
+    </script>
+</body>
+
+</html>
