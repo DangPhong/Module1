@@ -10,9 +10,12 @@
 
 <body>
     <form>
-        <input id="thang" type="text">
-        <input type="button" onclick="tinhSoNgay()" value="Tính số ngày">
-        <p id="ketQua"></p>
+        <fieldset>
+            <legend>Nhập số tháng</legend>
+            <input id="thang" type="text">
+            <input type="button" onclick="tinhSoNgay()" value="Tính số ngày">
+            <p id="ketQua"></p>
+        </fieldset>
     </form>
     <script>
         function tinhSoNgay() {
@@ -33,13 +36,13 @@
                 case 11:
                     document.write(" Có 30 ngày.");
                     break;
-                    case 2: 
+                case 2:
                     document.write(" Có 28 hoặc 29 ngày.")
                 default:
-                document.write("Nhập sai tháng");
-                document.getElementById("ketQua").innerHTML=kq;
+                    document.write("Nhập sai tháng");
+                    document.getElementById("ketQua").innerHTML = kq;
             }
-        }
+        } 
     </script>
 </body>
 
