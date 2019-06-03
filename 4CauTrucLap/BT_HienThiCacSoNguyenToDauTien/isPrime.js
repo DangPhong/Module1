@@ -1,4 +1,4 @@
-function ketQuaNguyenTo(n) {
+function kiemTraNguyenTo(n) {
     var ketQua = true;
     if (n < 2)
         ketQua = false;
@@ -16,10 +16,11 @@ function ketQuaNguyenTo(n) {
     }
     return ketQua;
 }
+
 var dem = 0;
 var i = 2;
 while (dem < 20) {
-    if (ketQuaNguyenTo(i)) {
+    if (kiemTraNguyenTo(i)) {
         dem++;
         document.write(i + "<br>");
     }
