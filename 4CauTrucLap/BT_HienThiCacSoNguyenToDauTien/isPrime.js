@@ -25,5 +25,4 @@ while (dem < 20) {
         document.write(i + "<br>");
     }
     i++;
-
 }

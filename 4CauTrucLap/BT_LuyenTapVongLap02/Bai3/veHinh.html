@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+        x 
+        x x
+        x x x
+        x x x x
+        x x x x x
+        */
+        // var number = 1;
+        // while (number <= 5) {
+        //     for (i = 1; i <= number; i++) {
+        //         document.write("* ");
+        //     }
+        //     document.write("<br>");
+        //     number++;
+        // }
+        function veTamGiac1(number) {
+            var number = 1;
+            while (number <= 5) {
+                for (i = 1; i <= number; i++) {
+                    document.write("* ");
+                }
+                document.write("<br>");
+                number++;
+            }
+        }
+
+
+        function veTamGiac2(number) {
+            var number;
+            while (number >= 1) {
+                for (i = 1; i <= number; i++) {
+                    document.write("* ");
+                }
+                document.write("<br>");
+                number--;
+            }
+        }
+
+        function veHCN(n, m) {
+            for (let i = 1; i <= n; i++) {
+                if (i == 1 || i == n) {
+                    for (let j = 1; j <= m; j++) {
+                        document.write("*");
+                    }
+                } else {
+                    for (let j = 1; j <= m; j++) {
+                        if (j == 1 || j == m)
+                            document.write("*");
+                        else
+                            document.write("&nbsp;&nbsp;");
+                    }
+                }
+                document.write("<br>");
+
+            }
+        }
+       
+        veTamGiac1(5);
+        document.write("......."+"<br>");
+        veTamGiac2(5);
+        document.write("......."+"<br>");
+        veHCN(5,15);
+    </script>
+</body>
+
+</html>
