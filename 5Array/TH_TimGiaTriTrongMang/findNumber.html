@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var value = prompt('Nhập vào giá trị cần tìm');
+        var kq = false;
+        var A = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        var index;
+        for (var i = 0; i < A.length; i++) {
+            if (value == A[i]) {
+                kq = true;
+                index = i;
+            }
+        }
+        document.write((A) + "<br>");
+
+        if (kq == true)
+            document.write('Phần tử ' + value + " có trong mảng, vị trí: " + index);
+        else
+            document.write('Phần tử ' + value + " không có trong mảng");
+    </script>
+</body>
+
+</html>

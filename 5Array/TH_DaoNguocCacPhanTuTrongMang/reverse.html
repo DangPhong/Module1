@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arrayNum = [1, 2, 33, 4, 6, 7];
+        let first = 0;
+        let last = arrayNum.length - 1;
+        while (first < last) {
+            let b = arrayNum[first];
+            arrayNum[first] = arrayNum[last];
+            arrayNum[last] = b;
+            first++;
+            last--;
+        }
+        document.write(arrayNum);
+    </script>
+</body>
+
+</html>

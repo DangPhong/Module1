@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // var n=prompt('Nhập n: ');
+        // var A=[];
+        // for (i=0;i<=n;i++){
+        //     prompt(A[i]);
+        // }
+        var A = [7, 55, 44, 33, 8, 9, 33, 100, 54, 7, 4, 5];
+        var max = A[0];
+        var index = 0;
+        for (var i = 0; i < A.length; i++) {
+            if (A[i] > max) {
+                max = A[i];
+                index = i;
+            }
+        }
+        document.write("Phần từ lớn nhất trong mảng là " + max + " tại vị trí " + index)
+    </script>
+</body>
+
+</html>
