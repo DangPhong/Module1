@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var str = 'ahbdf-65fhd87-it-88';
+        var arrNum = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+        //   var kq = false;
+        var dem = 0;
+        for (let i = 0; i < str.length; i++) {
+            for (let j = 0; j < arrNum.length; j++) {
+                if (str[i] == '-') {
+                    if (str[i + 1] == arrNum[j]) {
+                        dem++;
+                    }
+                }
+            }
+        }
+        console.log(dem);
+        document.write('số lượng số nguyên âm trong mảng là: '+dem);
+    </script>
+</body>
+
+</html>

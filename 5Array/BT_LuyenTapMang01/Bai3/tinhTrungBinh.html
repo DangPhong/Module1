@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var A = [1, 33, 44, 5, 46, 77, 88, 55, 55];
+        var max = A[1];
+        var index = 0;
+        tong = 0;
+        for (let i = 0; i < A.length; i++) {
+            tong = tong + A[i];
+            if (A[i] > max) {
+                max = A[i];
+                index = i;
+            }
+        }
+        document.write('Phần tử lớn nhất trong mảng là ' + A[index] + "<br>");
+        document.write('Giá trị trung bình trong mảng là: ' + (tong / A.length));
+    </script>
+</body>
+
+</html>

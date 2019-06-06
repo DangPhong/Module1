@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //sắp xếp tăng dần
+        var arrA = [32, 4, 32, 75, 0, 3, 53, 94, 75, 8, 0, 93, 47, 58, 47];
+        var temp;
+        for (let i = 0; i < arrA.length - 1; i++) {
+            for (let j = i + 1; j < arrA.length; j++) {
+                if (arrA[i] < arrA[j]) {
+                    temp = arrA[i];
+                    arrA[i] = arrA[j];
+                    arrA[j] = temp;
+                }
+            }
+        }
+        console.log(arrA);
+    </script>
+</body>
+
+</html>
