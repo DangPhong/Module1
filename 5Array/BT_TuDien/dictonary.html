@@ -12,16 +12,27 @@
     <form>
         <fieldset>
             <legend>Tra từ điển</legend>
-            <input type="text" id="txtNhap">
-            <input type="button" id="btnDich" value="Dịch">
+            <input type="text" id="txtValue">
+            <input type="button" id="btnDich" value="Dịch" onclick="timKiem()">
             <p id="result"></p>
         </fieldset>
     </form>
     <script>
         var arrAnh = ['cat', 'dog', 'monkey'];
         var arrVie = ['mèo', 'chó', 'khỉ'];
+        
 
         function timKiem() {
+            var tu = document.getElementById("txtValue").value;
+            var kq = false;
+            for (let i = 0; i < arrAnh.length; i++) {
+                if (tu == arrAnh[i]) {
+                    kq = true;
+                    document.getElementById("result").innerHTML = arrVie[i];
+                }
+                if (kq ==false)
+                    document.getElementById("result").innerHTML = 'Không tìm thấy từ này!';
+            }
 
         }
     </script>
