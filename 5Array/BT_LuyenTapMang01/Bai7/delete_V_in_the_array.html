@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arrNum = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        v = +prompt("Nhập số V= ");
+        kq = false;
+        for (let i = 0; i < arrNum.length; i++) {
+            if (arrNum[i] == v) {
+                kq = true;
+                // Xóa 1 phần tử tại vị trí i
+                arrNum.splice(i, 1);
+                arrNum.push(0);
+            }
+        }
+        if (kq == false) alert("Không có V trong mảng")
+        else
+            document.write(arrNum);
+    </script>
+</body>
+
+</html>
