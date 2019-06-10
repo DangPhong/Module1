@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arrChar = ['c', 's', 'c', '2', '6', '1','6'];
+        var arrNum = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+        var count = 0;
+        for (let i = 0; i < arrChar.length; i++) {
+           for (let j = 0; j < arrNum.length; j++) {
+              if(arrChar[i]==arrNum[j])
+              count++;
+           }
+        }
+        console.log(count);
+        
+    </script>
+</body>
+
+</html>
