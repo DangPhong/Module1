@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arrayA = [];
+
+        function input(n) {
+
+            for (let i = 0; i < n; i++) {
+                let tam = Math.floor((Math.random() * 10) + 1);
+                arrayA.push(tam);
+            }
+            document.write('Mảng sau khi nhập: ' + (arrayA) + "<br>");
+        }
+
+        function find(x) {
+            var flag = false;
+            for (let i = 0; i < arrayA.length; i++) {
+                if (arrayA[i] === x) {
+                    flag = true;
+                }
+            }
+            if (!flag) {
+                document.write('Không có phần tử ' + x + ' trong mảng!' + "<br>");
+            } else {
+                document.write('Có ' + x + ' trong mảng' + "<br>");
+            }
+        }
+
+        function replace(x, y) {
+            for (let i = 0; i < arrayA.length; i++) {
+                if (arrayA[i] == x)
+                    arrayA[i] = y;
+            }
+            document.write(arrayA + "<br>");
+        }
+
+        input(5);
+        find(9);
+        find(19);
+        replace(9, 2);
+    </script>
+</body>
+
+</html>
