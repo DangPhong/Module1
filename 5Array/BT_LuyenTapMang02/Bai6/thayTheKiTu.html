@@ -10,16 +10,16 @@
 
 <body>
     <script>
-        var arrayA = [];
+        var arrayA = ['a','b','f','-','-','u'];
 
-        function input(n) {
+        // function input(n) {
 
-            for (let i = 0; i < n; i++) {
-                let tam = Math.floor((Math.random() * 10) + 1);
-                arrayA.push(tam);
-            }
-            document.write('Mảng sau khi nhập: ' + (arrayA) + "<br>");
-        }
+        //     for (let i = 0; i < n; i++) {
+        //         let tam = Math.floor((Math.random() * 10) + 1);
+        //         arrayA.push(tam);
+        //     }
+        //     document.write('Mảng sau khi nhập: ' + (arrayA) + "<br>");
+        // }
 
         function find(x) {
             var flag = false;
@@ -43,10 +43,12 @@
             document.write(arrayA + "<br>");
         }
 
-        input(5);
-        find(9);
-        find(19);
-        replace(9, 2);
+       
+        find('-');
+        find('b');
+     
+        replace('-', '_');
+        replace('a','c');
     </script>
 </body>
 
