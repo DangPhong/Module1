@@ -10,19 +10,21 @@
 
 <body>
     <script>
-        var string = 'nguyen    dang     phong       \n   C05' + '   \n  G';
-        const SPACE = ' ';
-        const TAB = '\t';
-        const BREAK_LINE = '\n';
+        // var string = '     nguyen    dang     phong     nguyen  ';
+        // let newString = string.split(''); //chuyển chuỗi thành mảng kí tự.
+        // //console.log(newString);
+        // while (newString.indexOf('  ') > 0) {
+        //     newString.splice(newString.indexOf('  '), 1);
+        //     console.log(a);
+        // }
+
+        var string = '     nguyen    dang     phong     nguyen  ';
         var count = 0;
-        var flag = true;
+        if (string[0] != ' ')
+            count++;
         for (let i = 0; i < string.length; i++) {
-            if (i != SPACE && i != TAB && i != BREAK_LINE) {
-                if (flag) {
-                    count++;
-                    flag = false;
-                } else
-                    flag = true;
+            if (string[i]== ' '&& string[i+1]!=' ' &&string[i+1]!=null) {
+                count++;
             }
         }
         console.log(count);
