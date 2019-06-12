@@ -16,7 +16,7 @@ function kiemTraNguyenTo(n) {
     }
     return ketQua;
 }
-
+console.log(kiemTraNguyenTo(9));
 var dem = 0;
 var i = 2;
 while (dem < 20) {
