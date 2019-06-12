@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Chuyển đổi giữa feet và meters</h1>
+    <input type="text" id="nhap">
+    <input type="button" id="button" value="--> Meter" onclick="feetToMeter()">
+    <input type="button" id="button" value="--> Feet" onclick="meterToFeet()">
+
+    <p><a id="meters"></a></p>
+    <p><a id=feets></a></p>
+    <script>
+        function feetToMeter(feet) {
+            feet = parseFloat("nhap");
+            feet = document.getElementById("nhap").value;
+            kq = 0.305 * feet;
+            document.getElementById("meters").innerHTML = kq;
+        }
+
+        function meterToFeet(meter) {
+            meter = parseFloat("nhap");
+            meter = document.getElementById("nhap").value;
+            kq = 3.279 * meter;
+            document.getElementById("feets").innerHTML = kq;
+        }
+    </script>
+</body>
+
+</html>
