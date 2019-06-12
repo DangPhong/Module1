@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function checkPrime(num) {
+            var flag = true;
+            if (num < 2)
+                flag = false;
+            else if (num == 2)
+                flag = true;
+            else if (num % 2 == 0)
+                flag = false;
+            else
+                // var i = 3;
+                // while (i <= Math.sqrt(num)) {
+                //     if (num % i == 0) {
+                //         flag = false;
+                //         break;
+                //     }
+                // }
+                for (let i = 3; i <= Math.sqrt(num); i+=2) {
+                    if (num % i == 0) {
+                        flag = false;
+                        break;
+                    }
+                }
+            return flag;
+        }
+
+        console.log(checkPrime(9));
+
+        for (let i = 0; i < 1000; i++) {
+            if (checkPrime(i))
+                console.log(i);
+        }
+    </script>
+</body>
+
+</html>

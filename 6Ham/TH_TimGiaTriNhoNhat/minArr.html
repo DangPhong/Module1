@@ -1,12 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
-    
+    <script>
+        function findMinArr(arr) {
+            var min = arr[0];
+            lengthArr = arr.length;
+            for (let i = 1; i < lengthArr; i++) {
+                if (arr[i] < min) {
+                    min = arr[i];
+                }
+            }
+            return min;
+        }
+        var arr1 = [4, 7, 5, 33, 66, 2, 77, 88,-2];
+        console.log(findMinArr(arr1));
+    </script>
 </body>
+
 </html>
