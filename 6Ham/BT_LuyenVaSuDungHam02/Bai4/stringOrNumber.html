@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arrNum = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+        function inputWhat(char) {
+            var flag = false;
+            for (let i = 0; i < arrNum.length; i++) {
+                if (char === arrNum[i]) {
+                    flag = true;
+                    break;
+
+                } else flag = false;
+            }
+            if (flag == true)
+                console.log(true);
+            else
+                console.log(false);
+            return flag;
+        }
+
+        inputWhat('a');
+        inputWhat(5);
+        inputWhat('5');
+    </script>
+</body>
+
+</html>

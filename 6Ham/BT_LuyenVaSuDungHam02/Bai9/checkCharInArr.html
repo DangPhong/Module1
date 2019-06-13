@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function checkArr(char, arr) {
+            var dem = 0;
+            var flag = false;
+            for (let i = 0; i < arr.length; i++) {
+                if (char === arr[i]) {
+                    flag = true;
+                    dem++;          
+                }
+            }
+            if (flag == true)
+                console.log(char + " xuất hiện trong mảng " + dem + " lần");
+            else
+                console.log(char + " không xuất hiện trong mảng");
+            return flag;
+        }
+        checkArr('a', ['a', 'a', 'a', 'd', 'c']);
+        checkArr('a', ['d', 'b', 'v', 'd', 'c']);
+    </script>
+</body>
+
+</html>

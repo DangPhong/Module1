@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function comparison(a, b, c) {
+            if (a > b) {
+                if (a > c)
+                    console.log(a + ' là số lớn nhất!');
+                else
+                    console.log(c + ' là số lớn nhất!');
+            } else
+            if (b > c)
+                console.log(b + ' là số lớn nhất!');
+            else
+                console.log(c + ' là số lớn nhất!');
+        }
+
+        comparison(1, 2, 3);
+        comparison(100, 22, 13);
+        comparison(16, 12, 13);
+    </script>
+</body>
+
+</html>
