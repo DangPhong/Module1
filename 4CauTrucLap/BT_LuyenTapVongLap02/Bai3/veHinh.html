@@ -10,25 +10,10 @@
 
 <body>
     <script>
-        /*
-        x 
-        x x
-        x x x
-        x x x x
-        x x x x x
-        */
-        // var number = 1;
-        // while (number <= 5) {
-        //     for (i = 1; i <= number; i++) {
-        //         document.write("* ");
-        //     }
-        //     document.write("<br>");
-        //     number++;
-        // }
         function veTamGiac1(number) {
-            var number = 1;
+            number = 1;
             while (number <= 5) {
-                for (i = 1; i <= number; i++) {
+                for (var i = 1; i <= number; i++) {
                     document.write("* ");
                 }
                 document.write("<br>");
@@ -37,11 +22,33 @@
         }
 
         function veTamGiac2(number) {
-            var number;
             while (number >= 1) {
-                for (i = 1; i <= number; i++) {
+                for (var i = 1; i <= number; i++) {
                     document.write("* ");
                 }
+                document.write("<br>");
+                number--;
+            }
+        }
+
+        function veTamGiac3(number) {
+            number = 1;
+            while (number <= 5) {
+                for (let j = 0; j < 5 - number; j++)
+                    document.write("&nbsp;&nbsp;&nbsp;");
+                for (var i = 1; i <= number; i++)
+                    document.write("* ");
+                document.write("<br>");
+                number++;
+            }
+        }
+
+        function veTamGiac4(number) {
+            while (number >= 1) {
+                for (let j = 0; j < 5 - number; j++)
+                    document.write("&nbsp;&nbsp;&nbsp;");
+                for (var i = 1; i <= number; i++)
+                    document.write("* ");
                 document.write("<br>");
                 number--;
             }
@@ -64,12 +71,16 @@
                 document.write("<br>");
             }
         }
-       
+
         veTamGiac1(5);
-        document.write("......."+"<br>");
+        document.write("............................" + "<br>");
         veTamGiac2(5);
-        document.write("......."+"<br>");
-        veHCN(5,15);
+        document.write("............................" + "<br>");
+        veTamGiac3(5);
+        document.write("............................" + "<br>");
+        veTamGiac4(5);
+        document.write("............................" + "<br>");
+        veHCN(5, 15);
     </script>
 </body>
 

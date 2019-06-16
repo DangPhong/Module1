@@ -16,14 +16,14 @@
             for (let i = 0; i < arr.length; i++) {
                 if (char === arr[i]) {
                     flag = true;
-                    dem++;          
+                    dem++;
                 }
             }
             if (flag == true)
                 console.log(char + " xuất hiện trong mảng " + dem + " lần");
             else
                 console.log(char + " không xuất hiện trong mảng");
-            return flag;
+           // return flag;
         }
         checkArr('a', ['a', 'a', 'a', 'd', 'c']);
         checkArr('a', ['d', 'b', 'v', 'd', 'c']);

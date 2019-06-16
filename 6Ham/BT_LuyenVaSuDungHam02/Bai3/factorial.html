@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function factorial(num) {
+            if (num === 0)
+                return 1;
+            else
+                return num * factorial(num - 1);
+        }
+
+        function factorial2(num2) {
+            var giaiThua = 1;
+            var i = 2;
+            while (i <= num2) {
+                giaiThua = giaiThua * i;
+                i++;
+            }
+            return giaiThua;
+        }
+        console.log(factorial(0));
+        console.log(factorial(5));
+
+        console.log(factorial2(1));
+        console.log(factorial2(10));
+    </script>
+</body>
+
+</html>
