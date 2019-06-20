@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <fieldset>
+        <legend>Adam vs Eva</legend>
+
+        <p> <input type="button" value="Adam" id="adam"> <a></a></p>
+        <img src="apple.png"></p>
+        <p id="apple"> <img src="apple.png"> </p>
+        <p> <input type="button" value="Eva" id="eva"></p>
+
+    </fieldset>
+    <script>
+        class Apple {
+            constructor(weight) {
+                this.weight = 10;
+            }
+            decrease() {
+                this.weight--;
+            }
+            isEmpty() {
+                this.weight < 0 ? true : false;
+            }
+            getWeight() {
+                return this.weight;
+            }
+        }
+
+        class Human {
+            constructor(name, gender, weight) {
+                this.name = name;
+                this.gender = gender;
+                this.weight = weight;
+            }
+            eat(apple) {
+                if (isEmpty()) {
+                    apple.weight--;
+                    this.weight++;
+                } else
+                    alert("Táo đã ăn hết!");
+            }
+            talk(message) {
+                console.log(message);
+            }
+        }
+        var apple = new Apple();
+        var adam = new Human("Adam", "Nam", 60);
+        var eva = new Human("Eva", "Nữ", 45);
+        var appleHtml = document.getElementById("apple");
+        appleHtml.innerHTML = apple.weight;
+    </script>
+</body>
+
+</html>
