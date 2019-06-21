@@ -13,9 +13,11 @@
         <legend>Adam vs Eva</legend>
 
         <p> <input type="button" value="Adam" id="adam"> <a></a></p>
-        <img src="apple.png"></p>
+        <span id="weightAdam"> Adam nặng </span>
+
         <p id="apple"> <img src="apple.png"> </p>
         <p> <input type="button" value="Eva" id="eva"></p>
+        <span id="weightEva"> </span>
 
     </fieldset>
     <script>
@@ -27,7 +29,7 @@
                 this.weight--;
             }
             isEmpty() {
-                this.weight < 0 ? true : false;
+                return (this.weight <= 0) ? false : true;
             }
             getWeight() {
                 return this.weight;
@@ -41,7 +43,7 @@
                 this.weight = weight;
             }
             eat(apple) {
-                if (isEmpty()) {
+                if (apple.isEmpty()) {
                     apple.weight--;
                     this.weight++;
                 } else
@@ -56,6 +58,28 @@
         var eva = new Human("Eva", "Nữ", 45);
         var appleHtml = document.getElementById("apple");
         appleHtml.innerHTML = apple.weight;
+        var weightAdam = document.getElementById("weightAdam");
+        weightAdam.innerHTML = adam.weight;
+        var weightEva = document.getElementById("weightEva");
+        weightEva.innerHTML = eva.weight;
+
+        document.getElementById("adam").onclick = function () {
+            appleHtml = document.getElementById("apple");
+            adam.eat(apple);
+            appleHtml.innerHTML = apple.weight;
+            weightAdam = document.getElementById("weightAdam");
+            weightAdam.innerHTML = adam.weight;
+            adam.talk("Adam cắn 1 miếng");
+        }
+
+        document.getElementById("eva").onclick = function () {
+            appleHtml = document.getElementById("apple");
+            eva.eat(apple);
+            appleHtml.innerHTML = apple.weight;
+            weightEva = document.getElementById("weightEva");
+            weightEva.innerHTML = eva.weight;
+            eva.talk("Eva cắn 1 miếng");
+        }
     </script>
 </body>
 
