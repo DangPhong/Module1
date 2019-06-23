@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="game"></div>
+    <script>
+        class Object {
+            constructor(image, top, left, size) {
+                this.image = image;
+                this.top = top;
+                this.left = left;
+                this.size = size;
+            }
+            getObject() {
+                return '<img width="' + this.size + '"' +
+                    ' height="' + this.size + '"' +
+                    ' src="' + this.image + '"' +
+                    ' style="top: ' + this.top + 'px; left:' + this.left + 'px;position:absolute;" />';
+            }
+            moveRight() {
+                this.left += 20;
+                console.log('log: ' + this.left);
+            }
+            moveBelow() {
+                this.top += 20;
+                console.log('top: ' +this.left);
+
+            }
+        }
+        var car = new Object('car.png', 20, 30, 200);
+
+        function start() {
+            if (car.left < window.innerWidth - car.size) {
+                car.moveRight();
+            }
+
+            document.getElementById('game').innerHTML = car.getObject();
+            setTimeout(start, 50);
+        }
+       
+
+        function start2() {
+            if (car.top < window.innerWidth - car.size) {
+                car.moveBelow();
+            }
+            document.getElementById('game').innerHTML = car.getObject();
+            setTimeout(start, 50);
+        }
+        start();
+       // start2();
+    </script>
+</body>
+
+</html>

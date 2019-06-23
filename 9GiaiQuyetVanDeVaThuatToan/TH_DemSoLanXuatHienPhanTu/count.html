@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function count(arr, data) {
+            var pos;
+            var dem = 0;
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] === data) {
+                    dem++;
+                    console.log('vị trí của ' + data + ': ' + i);
+                }
+            }
+            console.log('Số lần xuất hiện của ' + data +' là: ' +dem);
+            //console.log(pos);
+        }
+
+        var num = [];
+        for (let i = 0; i < 101; i++) {
+            num[i] = Math.floor((Math.random() * 100) + 1);
+        }
+        console.log(num);
+        var countValue = count(num, 55);
+    </script>
+</body>
+
+</html>
