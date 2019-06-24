@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function isFirstLetterUpperCase(str) {
+            //Tìm một giá trị không nằm trong khoảng từ A đến Z
+            regexp = /^[A-Z]/;
+            //test() tìm kiếm một mẫu chuỗi, trả về giá trị true nếu tìm thấy, trả về giá trị false nếu không tìm thấy
+            if (regexp.test(str)) {
+                console.log('Kí tự đầu tiên trong chuỗi ' + str + ' là chữ hoa');
+            } else
+                console.log('Kí tự đầu tiên trong chuỗi ' + str + ' không phải là chữ hoa');
+        }
+
+        isFirstLetterUpperCase('Nguyen van Nam');
+        isFirstLetterUpperCase('NGUYEN VAN NAM');
+        isFirstLetterUpperCase('nguyen van Nam');
+    </script>
+</body>
+
+</html>
