@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form name="form1" id="form1" method="post">
+        <input type="text" id="number" size="40">
+        <input type="button" name="check" value="Check" onclick="validateTelephoneNumber();">
+    </form>
+    <script>
+        function validateTelephoneNumber() {
+            var number = document.getElementById('number').value;
+            regexp = /^[CAP][0-9]{4}[GHIKLM]$/;
+
+            if (!regexp.test(number)) {
+                alert(
+                    'Hãy nhập tên lớp hợp lệ.\nTên một lớp học hợp lệ cần đạt các yêu cầu sau\nBắt đầu bằng một ký tự chữ hoa C hoặc A hoặc P \nKhông chứa các ký tự đặc biệt\n Theo sau ký tự bắt đầu là 4 ký tự số\nKết thúc phải là 1 trong những ký tự chữ hoa sau: G, H, I, K, L, M');
+                return false;
+            } else {
+                alert('Tên lớp hợp lệ');
+            }
+        }
+    </script>
+</body>
+
+</html>
