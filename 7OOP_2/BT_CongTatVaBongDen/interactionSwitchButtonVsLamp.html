@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <fieldset>
+        <legend>Sự tương tác giữa công tắt và bóng đèn</legend>
+        <img id="lamp" src="https://www.w3schools.com/js/pic_bulboff.gif" style="width:100px"><br> <br>
+        <input type="button" onclick="interact()" value="OFF" class="btn btn btn-success" id="button"
+            style="margin-left: 20px; width: 60px;color: red">
+
+    </fieldset>
+    <script>
+        class Lamp {
+            constructor(status) {
+                this.status = false;
+            }
+        }
+
+        class SwitchButton {
+            constructor(status) {
+                this.status = false;
+            }
+            switchOnOff(lamp) {
+                if (this.status === false) {
+                    lamp.status = false;
+                }
+                if (this.status === true) {
+                    lamp.status = true;
+                }
+            }
+        }
+        var lamp = new Lamp();
+        var switchButton = new SwitchButton();
+        var button = document.getElementById('button');
+
+        function interact() {
+            if (switchButton.status === false) {
+                switchButton.status = true;
+                button.value = "ON";
+                button.style.color = "blue";
+                switchButton.switchOnOff(lamp);
+                let lampHtml = document.getElementById("lamp");
+                lampHtml.src = "https://www.w3schools.com/js/pic_bulbon.gif";
+            } else {
+                switchButton.status = false;
+                button.value = "OFF";
+                button.style.color = "red";
+                switchButton.switchOnOff(lamp);
+                let lampHtml = document.getElementById("lamp");
+                lampHtml.src = "https://www.w3schools.com/js/pic_bulboff.gif";
+            }
+        }
+    </script>
+</body>
+
+</html>
