@@ -1,8 +1,8 @@
 var canvas = document.getElementById('game');
 var context = canvas.getContext('2d');
 var ball = {
-    x: 20,
-    y: 20,
+    x: canvas.width / 2 ,
+    y: canvas.height - 20,
     radius: 10,
     dx: 5,
     dy: 2
@@ -18,6 +18,38 @@ var paddle = {
 }
 
 var isGameOver = false;
+// var brickConfig = {
+//     offSetX: 25,
+//     offSetY:25,
+//     margin:25,
+//     width: 70,
+//     height:15,
+//     totalRow:3,
+//     totalCol:5
+// }
+// var brickList = [];
+
+// for (let i = 0; i < brickList.totalRow; i++) {
+//     for (let j = 0; j < brickList.totalCol; j++) {
+//         brickList.push({
+//             x: brickConfig.offSetX + j * (brickConfig.width + brickConfig.margin),
+//             y: brickConfig.offSetY + i * (brickConfig.height + brickConfig.margin),
+//             isBroken: false
+//         });
+
+//     }
+
+// }
+// function drawBricks() {
+//     brickList.forEach(function (b) {
+//         context.beginPath();
+//         context.fillStyle = 'blue';
+//         context.rect(b.x, b.y, brickConfig.width, brickConfig.height);
+//         context.fill();
+//         context.closePath();
+//     });
+// }
+
 
 // nhả phím {37 trái - 39 phải}
 document.addEventListener('keyup', function (event) {
@@ -56,6 +88,29 @@ function drawPaddle() {
     context.closePath();
 }
 
+// Vẽ những viên gạch
+/*  
+    2 * OFFSET + 7*WiDTH + 6*Margin = 500
+    ROW =7 ; 
+    COL = 7
+
+*/
+function drawBricks() {
+    for (let i = 0; i < 7; i++) {
+        for (let j = 0; j < 7; j++) {
+            context.beginPath();
+            context.rect(
+                0 + j * (70 + 2),
+                0 + i * (15 + 2),
+                70, 15
+            );
+            context.fill();
+            context.closePath();
+
+        }
+
+    }
+}
 // Xử lý bóng va chạm vs tường
 function handleBallCollideWall() {
     if (ball.x < ball.radius || ball.x > canvas.width - ball.radius) {
@@ -114,6 +169,7 @@ function update() {
         context.clearRect(0, 0, canvas.clientWidth, canvas.height);
         drawBall();
         drawPaddle();
+        drawBricks();
         updatePaddlePosition();
         handleBallCollidePaddle();
         handleBallCollideWall()
