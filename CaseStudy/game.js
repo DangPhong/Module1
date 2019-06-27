@@ -28,7 +28,7 @@ var brickConfig = {
     margin: 5,
     width: 70,
     height: 15,
-    totalRow: 3,
+    totalRow: 1,
     totalCol: 7
 }
 var isGameOver = false;
@@ -37,7 +37,7 @@ var userScore = 0;
 var maxScore = brickConfig.totalCol * brickConfig.totalRow;
 
 
-
+// mảng chứa gạch
 var brickList = [];
 for (let i = 0; i < brickConfig.totalRow; i++) {
     for (let j = 0; j < brickConfig.totalCol; j++) {
@@ -48,8 +48,8 @@ for (let i = 0; i < brickConfig.totalRow; i++) {
         });
     }
 }
-// Vẽ những viên gạch
 
+// Vẽ những viên gạch
 function drawBricks() {
     brickList.forEach(function (brick) {
         if (!brick.isBroken) {
@@ -135,6 +135,7 @@ function handleBallColideBricks() {
                 brick.isBroken = true;
                 userScore++;
                 console.log('score: ' + userScore);
+                document.getElementById("score").innerHTML = "Score: " + userScore;
 
                 if (userScore >= maxScore) {
                     isGameOver = true;

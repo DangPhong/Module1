@@ -6,15 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <style> 
-    canvas{
-        border: 1px solid red;
-    }
+    <style>
+        #canvas-container {
+            width: 100%;
+            text-align: center;
+        }
+
+        canvas {
+            border: 1px solid red;
+            display: inline;
+        }
+
+        body {
+            background-image: url(backgroud.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+
+        #score {
+            background-color: lightblue;
+            color: black;
+            padding: 20px;
+            text-align: center;
+        }
     </style>
 </head>
 
 <body>
-    <canvas id="game" width="500" height="500"></canvas>
+    <div id="canvas-container">
+        <canvas id="game" width="520" height="500"></canvas>
+    </div>
+    <h1 id="score">Score: </h1>
     <script src="game.js"></script>
 </body>
 
