@@ -1,4 +1,4 @@
-var soundBacground = new Audio("audio/background.mp3")
+var soundBackground = new Audio("audio/background.mp3")
 var soundGameOver = new Audio("audio/gameover.wav")
 var soundWall = new Audio("audio/wall.wav");
 var soundBrick = new Audio("audio/brick.wav");
@@ -12,8 +12,10 @@ var ball = {
     dx: 5,
     dy: 2
 }
+
+
 var paddle = {
-    width: 70,
+    width: 500,
     height: 10,
     x: canvas.width / 2 - 35,
     y: canvas.height - 10,
@@ -28,7 +30,7 @@ var brickConfig = {
     margin: 5,
     width: 70,
     height: 15,
-    totalRow: 1,
+    totalRow: 5,
     totalCol: 7
 }
 var isGameOver = false;
@@ -49,12 +51,25 @@ for (let i = 0; i < brickConfig.totalRow; i++) {
     }
 }
 
+//Sinh màu ngẫu nhiên
+function getRandomHex() {
+    return Math.floor(Math.random() * 255);
+}
+
+function getRandomColor() {
+    var red = getRandomHex();
+    var green = getRandomHex();
+    var blue = getRandomHex();
+    return "rgb(" + red + "," + blue + "," + green + ")";
+}
+var color = getRandomColor();
+
 // Vẽ những viên gạch
 function drawBricks() {
     brickList.forEach(function (brick) {
         if (!brick.isBroken) {
             context.beginPath();
-            context.fillStyle = "#c63939";
+            context.fillStyle = color;
             context.rect(brick.x, brick.y, brickConfig.width, brickConfig.height);
             context.fill();
             context.closePath();
@@ -137,6 +152,11 @@ function handleBallColideBricks() {
                 console.log('score: ' + userScore);
                 document.getElementById("score").innerHTML = "Score: " + userScore;
 
+                if (userScore % 10 == 0) {
+                    v++;
+                    paddle.width = paddle.width / 2;
+                };
+
                 if (userScore >= maxScore) {
                     isGameOver = true;
                     isGameWin = true;
@@ -149,9 +169,11 @@ function handleBallColideBricks() {
 }
 
 // cập nhật vị trí quả bóng
+var v = 1;
+
 function updateBallPosition() {
-    ball.x += ball.dx;
-    ball.y += ball.dy;
+    ball.x += (v * ball.dx);
+    ball.y += (v * ball.dy);
 }
 
 // cập nhật vị trí thanh chắn
@@ -182,28 +204,27 @@ function checkGameOver() {
 function handleGameOver() {
 
     if (isGameWin) {
-        console.log("you win!");
+        alert("you win!");
         soundWin.load();
         soundWin.play();
     } else {
-        console.log('Game Over!');
-        soundBacground.pause();
+        alert('Game Over!');
+        soundBackground.pause();
         soundGameOver.play();
     }
 
 }
 
+// chạy nhạc nền 
 function playBackgroudSound() {
-    soundBacground.load();
-    soundBacground.volume = .5;
-    soundBacground.play();
+    // soundBackground.load();
+    soundBackground.play();
+    soundBackground.volume = .5;
+
 }
 
-
 function update() {
-
     if (!isGameOver) {
-        playBackgroudSound();
         context.clearRect(0, 0, canvas.clientWidth, canvas.height);
         drawBall();
         drawPaddle();
@@ -219,4 +240,5 @@ function update() {
         handleGameOver();
     }
 }
+playBackgroudSound();
 update();
