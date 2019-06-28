@@ -7,15 +7,17 @@ var canvas = document.getElementById('game');
 var context = canvas.getContext('2d');
 var ball = {
     x: canvas.width / 2,
-    y: canvas.height - 20,
+    y: canvas.height - 40,
     radius: 10,
     dx: 5,
     dy: 2
 }
 
 
+
+
 var paddle = {
-    width: 500,
+    width: 150,
     height: 10,
     x: canvas.width / 2 - 35,
     y: canvas.height - 10,
@@ -26,18 +28,68 @@ var paddle = {
 
 var brickConfig = {
     offSetX: 0,
-    offSetY: 0,
+    offSetY: 40,
     margin: 5,
     width: 70,
     height: 15,
     totalRow: 5,
     totalCol: 7
 }
+
+var heartConfig = {
+    x: 0,
+    y: 0,
+    margin: 5,
+    width: 30,
+    height: 30,
+    totalHeart: 3
+}
+
+// var heartList = [];
+// for (let i = 0; i < heartConfig.totalHeart; i++) {
+//     heartList.push({
+//         x: heartConfig.x + i * (heartConfig.width + heartConfig.margin),
+//         isFade: false
+//     })
+// }
+
+// function drawImg() {
+//     heartList.forEach(function (img) {
+//         if (!img.isFade) {
+//             var image = new Image();
+//             image.src = 'heart.png';
+//             context.drawImage(image, img.x, img.y, img.width, img.height);
+//         }
+//     })
+// }
+
+function drawHeart(num) {
+    var x = 0;
+    var image = new Image();
+    image.src = 'heart.png';
+    for (let i = 0; i < num; i++) {
+        context.drawImage(image, x, 0, 30, 30);
+        x += 40;
+    }
+}
+
+function drawHeart2(num) {
+    var x = 0;
+    var image = new Image();
+    image.src = 'heart2.png';
+    for (let i = 0; i < num; i++) {
+        context.drawImage(image, x, 0, 30, 30);
+        x += 40;
+    }
+}
+
+function drawHeartPos(pos) {
+    drawHeart2(3 - pos);
+}
 var isGameOver = false;
 var isGameWin = false;
 var userScore = 0;
 var maxScore = brickConfig.totalCol * brickConfig.totalRow;
-
 
 // mảng chứa gạch
 var brickList = [];
@@ -76,6 +128,7 @@ function drawBricks() {
         }
     })
 }
+
 
 // nhả phím {37 trái - 39 phải}
 document.addEventListener('keyup', function (event) {
@@ -134,9 +187,10 @@ function handleBallCollideWall() {
 
 // Xử lý bóng va chạm vs thanh chắn
 function handleBallCollidePaddle() {
-    if (ball.x + ball.radius >= paddle.x && ball.x + ball.radius <= paddle.x + paddle.width &&
-        ball.y + ball.radius >= canvas.height - paddle.height) {
+    if ((ball.x + ball.radius >= paddle.x && ball.x + ball.radius <= paddle.x + paddle.width &&
+            ball.y + ball.radius >= canvas.height - paddle.height) || lifeAgain) {
         ball.dy = -ball.dy;
+        lifeAgain = false;
     }
 }
 
@@ -190,11 +244,22 @@ function updatePaddlePosition() {
         paddle.x = canvas.width - paddle.width;
     }
 }
-
+var life = 3;
+var lifeAgain = false;
 // kiểm tra kết thúc
 function checkGameOver() {
-
+    drawHeart(3);
     if (ball.y > canvas.height - ball.radius) {
+        {
+            life--;
+        }
+        if (life) {
+            lifeAgain = true;
+        }
+        console.log('life: ' + life);
+    }
+    drawHeartPos(life);
+    if (life == 0) {
         isGameOver = true;
     }
 
@@ -204,11 +269,11 @@ function checkGameOver() {
 function handleGameOver() {
 
     if (isGameWin) {
-        alert("you win!");
+        console.log("you win!");
         soundWin.load();
         soundWin.play();
     } else {
-        alert('Game Over!');
+        console.log('Game Over!');
         soundBackground.pause();
         soundGameOver.play();
     }
@@ -226,6 +291,7 @@ function playBackgroudSound() {
 function update() {
     if (!isGameOver) {
         context.clearRect(0, 0, canvas.clientWidth, canvas.height);
+
         drawBall();
         drawPaddle();
         drawBricks();
