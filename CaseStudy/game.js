@@ -13,11 +13,8 @@ var ball = {
     dy: 2
 }
 
-
-
-
 var paddle = {
-    width: 150,
+    width: 500,
     height: 10,
     x: canvas.width / 2 - 35,
     y: canvas.height - 10,
@@ -44,24 +41,6 @@ var heartConfig = {
     height: 30,
     totalHeart: 3
 }
-
-// var heartList = [];
-// for (let i = 0; i < heartConfig.totalHeart; i++) {
-//     heartList.push({
-//         x: heartConfig.x + i * (heartConfig.width + heartConfig.margin),
-//         isFade: false
-//     })
-// }
-
-// function drawImg() {
-//     heartList.forEach(function (img) {
-//         if (!img.isFade) {
-//             var image = new Image();
-//             image.src = 'heart.png';
-//             context.drawImage(image, img.x, img.y, img.width, img.height);
-//         }
-//     })
-// }
 
 function drawHeart(num) {
     var x = 0;
@@ -129,7 +108,6 @@ function drawBricks() {
     })
 }
 
-
 // nhả phím {37 trái - 39 phải}
 document.addEventListener('keyup', function (event) {
     //console.log('Key UP');
@@ -182,7 +160,6 @@ function handleBallCollideWall() {
         soundWall.load();
         soundWall.play();
     }
-
 }
 
 // Xử lý bóng va chạm vs thanh chắn
@@ -262,7 +239,6 @@ function checkGameOver() {
     if (life == 0) {
         isGameOver = true;
     }
-
 }
 
 // xử lí kết thúc 
@@ -277,7 +253,6 @@ function handleGameOver() {
         soundBackground.pause();
         soundGameOver.play();
     }
-
 }
 
 // chạy nhạc nền 
@@ -285,13 +260,11 @@ function playBackgroudSound() {
     // soundBackground.load();
     soundBackground.play();
     soundBackground.volume = .5;
-
 }
 
 function update() {
     if (!isGameOver) {
         context.clearRect(0, 0, canvas.clientWidth, canvas.height);
-
         drawBall();
         drawPaddle();
         drawBricks();
