@@ -10,7 +10,7 @@
 
 <body>
     <script>
-        function fibonacci(number) {
+        function fibonacci_loop(number) {
             var a = 1;
             var b = 0;
             var temp = parseInt(temp);
@@ -19,17 +19,41 @@
                 a = a + b;
                 b = temp;
                 number--;
-                  //document.write(b + " ");
-                if (b % 5 == 0) {
-                    document.write(b);
-                    break;
-                }
             }
             return b;
         }
 
-        // In ra 20 số fibonacci đầu tiền
-        fibonacci(20);
+        function fibonacci(n) {
+            if (n <= 0) {
+                alert('false');
+            }
+            if (n == 1 || n == 2) return 1;
+            return fibonacci(n - 1) + fibonacci(n - 2);
+        }
+
+        function findFiboDiv5() {
+            var i = 1;
+            while (true) {
+                if (fibonacci(i) % 5 == 0) {
+                    console.log(fibonacci(i));
+                    break;
+                }
+                i++;
+            }
+        }
+
+        function getSum20fibonacci() {
+            var tong = 0;
+            for (let i = 1; i <= 5; i++) {
+                tong = tong + fibonacci(i)
+            }
+            console.log(tong);
+
+        }
+
+        console.log(fibonacci(20));
+        findFiboDiv5();
+        getSum20fibonacci();
     </script>
 </body>
 
