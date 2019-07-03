@@ -3,72 +3,75 @@ var soundGameOver = new Audio("audio/gameover.wav")
 var soundWall = new Audio("audio/wall.wav");
 var soundBrick = new Audio("audio/brick.wav");
 var soundWin = new Audio("audio/win.wav")
+var soundDie = new Audio("audio/die.wav");
 var canvas = document.getElementById('game');
+var canvas2 = document.getElementById('displayLife');
 var context = canvas.getContext('2d');
-var ball = {
-    x: canvas.width / 2,
-    y: canvas.height - 40,
-    radius: 10,
-    dx: 5,
-    dy: 2
-}
+var context2 = canvas2.getContext('2d');
 
 var paddle = {
-    width: 500,
-    height: 10,
-    x: canvas.width / 2 - 35,
-    y: canvas.height - 10,
+    width: 200,
+    height: 20,
+    x: canvas.width / 2 - 125,
+    y: canvas.height - 20,
     speed: 15,
     isMovingLeft: false,
-    isMoveingRight: false,
+    isMoveingRight: false
+}
+
+// Vẽ thanh chắn
+function drawPaddle() {
+    context.beginPath();
+    context.rect(paddle.x, paddle.y, paddle.width, paddle.height);
+    context.fillStyle = "#63b946";
+    context.fill();
+    context.closePath();
+}
+
+// nhấn phím
+document.addEventListener('keydown', function (event) {
+    //console.log('Key DOWN');
+    if (event.keyCode == 37) {
+        paddle.isMovingLeft = true;
+    } else if (event.keyCode == 39) {
+        paddle.isMovingRight = true;
+    }
+});
+
+// nhả phím {37 trái - 39 phải}
+document.addEventListener('keyup', function (event) {
+    //console.log('Key UP');
+    if (event.keyCode == 37) {
+        paddle.isMovingLeft = false;
+    } else if (event.keyCode == 39) {
+        paddle.isMovingRight = false;
+    }
+});
+
+// cập nhật vị trí thanh chắn
+function updatePaddlePosition() {
+    if (paddle.isMovingLeft) {
+        paddle.x -= paddle.speed;
+    } else if (paddle.isMovingRight) {
+        paddle.x += paddle.speed;
+    }
+
+    if (paddle.x < 0) {
+        paddle.x = 0;
+    } else if (paddle.x > canvas.width - paddle.width) {
+        paddle.x = canvas.width - paddle.width;
+    }
 }
 
 var brickConfig = {
     offSetX: 0,
-    offSetY: 40,
+    offSetY: 10,
     margin: 5,
     width: 70,
     height: 15,
     totalRow: 5,
     totalCol: 7
 }
-
-var heartConfig = {
-    x: 0,
-    y: 0,
-    margin: 5,
-    width: 30,
-    height: 30,
-    totalHeart: 3
-}
-
-function drawHeart(num) {
-    var x = 0;
-    var image = new Image();
-    image.src = 'heart.png';
-    for (let i = 0; i < num; i++) {
-        context.drawImage(image, x, 0, 30, 30);
-        x += 40;
-    }
-}
-
-function drawHeart2(num) {
-    var x = 0;
-    var image = new Image();
-    image.src = 'heart2.png';
-    for (let i = 0; i < num; i++) {
-        context.drawImage(image, x, 0, 30, 30);
-        x += 40;
-    }
-}
-
-function drawHeartPos(pos) {
-    drawHeart2(3 - pos);
-}
-var isGameOver = false;
-var isGameWin = false;
-var userScore = 0;
-var maxScore = brickConfig.totalCol * brickConfig.totalRow;
 
 // mảng chứa gạch
 var brickList = [];
@@ -108,26 +111,14 @@ function drawBricks() {
     })
 }
 
-// nhả phím {37 trái - 39 phải}
-document.addEventListener('keyup', function (event) {
-    //console.log('Key UP');
-    if (event.keyCode == 37) {
-        paddle.isMovingLeft = false;
-    } else if (event.keyCode == 39) {
-        paddle.isMovingRight = false;
-    }
-});
-
-// nhấn phím
-document.addEventListener('keydown', function (event) {
-    //console.log('Key DOWN');
-    if (event.keyCode == 37) {
-        paddle.isMovingLeft = true;
-    } else if (event.keyCode == 39) {
-        paddle.isMovingRight = true;
-    }
-});
-
+var ball = {
+    x: canvas.width / 2,
+    y: canvas.height - 20,
+    radius: 10,
+    speed: 6,
+    dx: 5,
+    dy: 2
+}
 // Vẽ bóng
 function drawBall() {
     context.beginPath();
@@ -137,13 +128,12 @@ function drawBall() {
     context.closePath();
 }
 
-// Vẽ thanh chắn
-function drawPaddle() {
-    context.beginPath();
-    context.rect(paddle.x, paddle.y, paddle.width, paddle.height);
-    context.fillStyle = "#63b946";
-    context.fill();
-    context.closePath();
+// cập nhật vị trí quả bóng
+var v = 1;
+
+function updateBallPosition() {
+    ball.x += (v * ball.dx);
+    ball.y += (v * ball.dy);
 }
 
 // Xử lý bóng va chạm vs tường
@@ -165,11 +155,31 @@ function handleBallCollideWall() {
 // Xử lý bóng va chạm vs thanh chắn
 function handleBallCollidePaddle() {
     if ((ball.x + ball.radius >= paddle.x && ball.x + ball.radius <= paddle.x + paddle.width &&
-            ball.y + ball.radius >= canvas.height - paddle.height) || lifeAgain) {
-        ball.dy = -ball.dy;
-        lifeAgain = false;
+            ball.y + ball.radius >= canvas.height - paddle.height) ) {
+        //  ball.dy = -ball.dy;
+
+        // Kiểm tra ở đâu quả bóng đập thanh chắn
+
+        let collidePoint = ball.x - (paddle.x + paddle.width / 2);
+        // if (collidePoint > 1) {
+        //     ball.dy = -ball.dy;
+        // } else {
+        collidePoint = collidePoint / (paddle.width / 2);
+        // Tính toán góc của bóng
+        //  console.log(collidePoint);
+
+        let angle = collidePoint * Math.PI / 3;
+        ball.dx = ball.speed * Math.sin(angle);
+        ball.dy = -ball.speed * Math.cos(angle);
+
+      //  lifeAgain = false;
     }
 }
+
+var isGameOver = false;
+var isGameWin = false;
+var userScore = 0;
+var maxScore = brickConfig.totalCol * brickConfig.totalRow;
 
 // Xử lý bóng va chạm vs gạch
 function handleBallColideBricks() {
@@ -184,8 +194,8 @@ function handleBallColideBricks() {
                 document.getElementById("score").innerHTML = "Score: " + userScore;
 
                 if (userScore % 10 == 0) {
-                    v++;
-                    paddle.width = paddle.width / 2;
+                    v = v + 0.5;
+                    paddle.width = paddle.width * 3 / 4;
                 };
 
                 if (userScore >= maxScore) {
@@ -199,41 +209,44 @@ function handleBallColideBricks() {
     })
 }
 
-// cập nhật vị trí quả bóng
-var v = 1;
-
-function updateBallPosition() {
-    ball.x += (v * ball.dx);
-    ball.y += (v * ball.dy);
-}
-
-// cập nhật vị trí thanh chắn
-function updatePaddlePosition() {
-    if (paddle.isMovingLeft) {
-        paddle.x -= paddle.speed;
-    } else if (paddle.isMovingRight) {
-        paddle.x += paddle.speed;
-    }
-
-    if (paddle.x < 0) {
-        paddle.x = 0;
-    } else if (paddle.x > canvas.width - paddle.width) {
-        paddle.x = canvas.width - paddle.width;
+// Vẽ trái tim (life)
+function drawHeart(num) {
+    var x = 0;
+    var image = new Image();
+    image.src = 'heart.png';
+    for (let i = 0; i < num; i++) {
+        context2.drawImage(image, x, 10, 30, 30);
+        x += 40;
     }
 }
+
+// Vẽ trái tim (die)
+function drawHeart2(num) {
+    var x = 0;
+    var image = new Image();
+    image.src = 'heart2.png';
+    for (let i = 0; i < num; i++) {
+        context2.drawImage(image, x, 10, 30, 30);
+        x += 40;
+    }
+}
+
+// Xử lí vẽ trái tim (khi die)
+function drawHeartPos(life) {
+    drawHeart2(3 - life);
+}
+
+
 var life = 3;
-var lifeAgain = false;
+//var lifeAgain = false;
+
 // kiểm tra kết thúc
 function checkGameOver() {
     drawHeart(3);
-    if (ball.y > canvas.height - ball.radius) {
-        {
-            life--;
-        }
-        if (life) {
-            lifeAgain = true;
-        }
-        console.log('life: ' + life);
+    if (ball.y + ball.radius > canvas.height) {
+        life--;
+        soundDie.play();
+        resetBall();
     }
     drawHeartPos(life);
     if (life == 0) {
@@ -241,9 +254,17 @@ function checkGameOver() {
     }
 }
 
+// Đặt lại bóng
+function resetBall() {
+    // ball.x = canvas.width / 2;
+    ball.x = paddle.x + 100;
+    ball.y = paddle.y - ball.radius;
+    ball.dx = 3;
+    ball.dy = -3;
+}
+
 // xử lí kết thúc 
 function handleGameOver() {
-
     if (isGameWin) {
         console.log("you win!");
         soundWin.load();
@@ -264,7 +285,7 @@ function playBackgroudSound() {
 
 function update() {
     if (!isGameOver) {
-        context.clearRect(0, 0, canvas.clientWidth, canvas.height);
+        context.clearRect(0, 0, canvas.width, canvas.height);
         drawBall();
         drawPaddle();
         drawBricks();
@@ -274,6 +295,7 @@ function update() {
         handleBallColideBricks();
         updateBallPosition();
         checkGameOver();
+        //resetBall();
         requestAnimationFrame(update);
     } else {
         handleGameOver();

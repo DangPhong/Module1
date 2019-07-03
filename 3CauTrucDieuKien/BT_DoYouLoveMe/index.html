@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div>
+        <input class="button" type="button" value="YES" id="yes" width="500px" height="500px">
+        <input class="button" type="button" value="NO" id="no" style="position: fixed; top: 377px; left: 620px;">
+    </div>
+
+    <script>
+        function getRdn(min, max) {
+            return Math.floor(Math.random() * (max - min) + min);
+        }
+
+        document.getElementById("no").onmouseover = function () {
+            let element = document.getElementById("no");
+            element.style.top = parseInt(element.style.top) + getRdn(300, 600) + 'px';
+            element.style.top = parseInt(element.style.top) - getRdn(300, 600) + 'px';
+            element.style.left = parseInt(element.style.left) + getRdn(300, 600) + 'px';
+            element.style.left = parseInt(element.style.left) - getRdn(300, 600) + 'px';
+        }
+        document.getElementById("yes").onclick = function () {
+            alert("<3");
+        }
+    </script>
+</body>
+
+</html>
