@@ -10,7 +10,24 @@
 
 <body>
     <script>
-        
+        function factorial(number) {
+            if (number === 0) {
+                return 1;
+            } else {
+                return number * factorial(number - 1);
+            }
+        }
+
+        function factorial2(num) {
+            var value = 1;
+            for (let i = 2; i <= num; i++) {
+                value = value * i;
+            }
+            return value;
+        }
+
+        console.log(factorial(5));
+        console.log(factorial2(5));
     </script>
 </body>
 
