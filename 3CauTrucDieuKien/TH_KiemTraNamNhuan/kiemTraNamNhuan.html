@@ -16,6 +16,14 @@
         if (nam % 4 == 0 && nam % 100 != 0 || nam % 400 == 0) {
             document.write(nam + " la nam nhuan!");
         } else document.write(nam + " khong phai la nam nhuan!");
+
+        function isLeapYear(year) {
+            if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+                return true;
+            }
+            return false;
+        }
+        isLeapYear(2000);
     </script>
 </body>
 

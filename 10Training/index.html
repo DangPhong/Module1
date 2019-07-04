@@ -9,11 +9,54 @@
 </head>
 
 <body>
+
+    <canvas id="myCanvas" width="500" height=" 500"></canvas>
+
     <script>
-       var y = 0;
- var y;
-        var x = (!y === 1);
-        console.log(x);
+        class Rectangle {
+            constructor(_xPos, _yPos, _width, _height) {
+                this.x = _xPos;
+                this.y = _yPos;
+                this.width = _width;
+                this.height = _height;
+            }
+
+            // getWidth() {
+            //     return this.width;
+            // }
+            // setWidth(width) {
+            //     return width = width;
+            // }
+            // getHeight() {
+            //     return this.height;
+            // }
+            // setHeight(height) {
+            //     return this.height = height;
+            // }
+            // getArea() {
+            //     return this.height * this.width;
+            // }
+            // getPerimeter() {
+            //     return (this.height + this.width) * 2;
+            // }
+            draw() {
+                var c = document.getElementById("myCanvas");
+                var ctx = c.getContext('2d');
+                ctx.beginPath();
+                ctx.fillRect(this.x, this.y, this.width, this.height);
+                ctx.stroke();
+                console.log('draw');
+                ctx.closePath();
+            }
+
+        }
+
+        var rectangle = new Rectangle(5, 5, 555, 555);
+        rectangle.draw();
+        // var dienTich = rectangle.getArea();
+        // var chuVi = rectangle.getPerimeter();
+        // console.log('chu vi: ' + chuVi);
+        // console.log('dien tich:  ' + dienTich);
     </script>
 </body>
 
