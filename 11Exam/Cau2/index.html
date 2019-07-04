@@ -13,7 +13,7 @@
         function tryRemoveFromArray(arr, index) {
             var arrLength = arr.length;
             for (let i = 0; i < arrLength; i++) {
-                if (arr[i] === index) {
+                if (i === index) {
                     arr.splice(i, 1);
                 }
             }
@@ -22,9 +22,12 @@
         arr1 = [12, 6, 3, 7, 21, 5, 7];
 
         tryRemoveFromArray(arr1, 2);
-        tryRemoveFromArray(arr1, 0);
-        tryRemoveFromArray(arr1, 7);
-        tryRemoveFromArray(arr1, -2);
+        arr2 = [12, 6, 3, 7, 21, 5, 7];
+        tryRemoveFromArray(arr2, 0);
+        arr3 = [12, 6, 3, 7, 21, 5, 7];
+        tryRemoveFromArray(arr3, 7);
+        arr4 = [12, 6, 3, 7, 21, 5, 7];
+        tryRemoveFromArray(arr4, -2);
     </script>
 </body>
 

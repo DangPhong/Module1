@@ -16,9 +16,11 @@
                 this.x = x;
                 this.y = y;
                 this.radius = radius;
-                this.color = '#FF3300';
+                this.color = color;
             }
-
+            setColor(color) {
+                return this.color = '#FF3300';
+            }
             render() {
                 var c = document.getElementById("myCanvas");
                 var ctx = c.getContext('2d');
@@ -30,8 +32,8 @@
                 ctx.closePath();
             }
         }
-
-        circle = new Circle(40, 50, 30, this.color);
+        const color = '#FF3300';
+        circle = new Circle(40, 50, 30, color);
         circle.render();
     </script>
 </body>
