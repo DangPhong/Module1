@@ -16,7 +16,7 @@
             border: 1px solid red;
             display: inline;
         }
-       
+
         body {
             background-image: url(backgroud.jpg);
             background-size: cover;
@@ -28,19 +28,29 @@
             color: black;
             padding: 20px;
             text-align: center;
+            float: left;
+
+        }
+
+        #life {
+            float: right;
         }
     </style>
 </head>
 
 <body>
     <div>
-        <canvas id="displayLife" width="120" height="50"></canvas>
+        <div>
+            <h1 id="score">Score: </h1>
+        </div>
+        <div id="life">
+            <canvas id="displayLife" width="120" height="50"></canvas>
+        </div>
+
     </div>
     <div id="canvas-container">
         <canvas id="game" width="520" height="500"></canvas>
     </div>
-
-    <h1 id="score">Score: </h1>
     <script src="game.js"></script>
 </body>
 

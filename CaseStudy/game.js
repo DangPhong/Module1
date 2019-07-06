@@ -12,7 +12,7 @@ var context2 = canvas2.getContext('2d');
 var paddle = {
     width: 200,
     height: 20,
-    x: canvas.width / 2 - 125,
+    x: canvas.width / 2 - 100,
     y: canvas.height - 20,
     speed: 15,
     isMovingLeft: false,
@@ -64,10 +64,10 @@ function updatePaddlePosition() {
 }
 
 var brickConfig = {
-    offSetX: 0,
+    offSetX: 5,
     offSetY: 10,
-    margin: 5,
-    width: 70,
+    margin: 15,
+    width: 60,
     height: 15,
     totalRow: 5,
     totalCol: 7
@@ -141,13 +141,13 @@ function handleBallCollideWall() {
     //kiểm tra va chạm 2 biên
     if (ball.x < ball.radius || ball.x > canvas.width - ball.radius) {
         ball.dx = -ball.dx;
-        soundWall.load();
+       // soundWall.load();
         soundWall.play();
     }
     //kiểm tra va chạm phía trên
     if (ball.y < ball.radius) {
         ball.dy = -ball.dy;
-        soundWall.load();
+       // soundWall.load();
         soundWall.play();
     }
 }
@@ -155,7 +155,9 @@ function handleBallCollideWall() {
 // Xử lý bóng va chạm vs thanh chắn
 function handleBallCollidePaddle() {
     if ((ball.x + ball.radius >= paddle.x && ball.x + ball.radius <= paddle.x + paddle.width &&
-            ball.y + ball.radius >= canvas.height - paddle.height) ) {
+            ball.y + ball.radius >= canvas.height - paddle.height)) {
+
+                
         //  ball.dy = -ball.dy;
 
         // Kiểm tra ở đâu quả bóng đập thanh chắn
@@ -172,7 +174,7 @@ function handleBallCollidePaddle() {
         ball.dx = ball.speed * Math.sin(angle);
         ball.dy = -ball.speed * Math.cos(angle);
 
-      //  lifeAgain = false;
+        //  lifeAgain = false;
     }
 }
 
@@ -185,8 +187,11 @@ var maxScore = brickConfig.totalCol * brickConfig.totalRow;
 function handleBallColideBricks() {
     brickList.forEach(function (brick) {
         if (!brick.isBroken) {
-            if (ball.x >= brick.x && ball.x <= brick.x + brickConfig.width &&
-                ball.y + ball.radius >= ball.y && ball.y - ball.radius <= brick.y + brickConfig.height) {
+            if (
+                ball.x + ball.radius > brick.x && ball.x - ball.radius < brick.x + brickConfig.width && ball.y + ball.radius > brick.y && ball.y - ball.radius < brick.y + brickConfig.height
+                // ball.x >= brick.x && ball.x <= brick.x + brickConfig.width &&
+                // ball.y + ball.radius >= ball.y && ball.y - ball.radius <= brick.y + brickConfig.height 
+            ) {
                 ball.dy = -ball.dy;
                 brick.isBroken = true;
                 userScore++;
@@ -202,7 +207,7 @@ function handleBallColideBricks() {
                     isGameOver = true;
                     isGameWin = true;
                 }
-                soundBrick.load();
+                //soundBrick.load();
                 soundBrick.play();
             }
         }
@@ -259,18 +264,18 @@ function resetBall() {
     // ball.x = canvas.width / 2;
     ball.x = paddle.x + 100;
     ball.y = paddle.y - ball.radius;
-    ball.dx = 3;
-    ball.dy = -3;
+    // ball.dx = 3;
+    // ball.dy = -3;
 }
 
 // xử lí kết thúc 
 function handleGameOver() {
     if (isGameWin) {
-        console.log("you win!");
-        soundWin.load();
+        alert("you win!");
+      //  soundWin.load();
         soundWin.play();
     } else {
-        console.log('Game Over!');
+        alert('Game Over!');
         soundBackground.pause();
         soundGameOver.play();
     }
